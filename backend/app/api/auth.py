@@ -9,6 +9,12 @@ from app.crud.user import (
     get_user_by_username,
 )
 
+from app.schemas.user import UserLogin, Token
+from app.crud.user import authenticate_user
+from app.auth.jwt_handler import create_access_token
+
+
+
 router = APIRouter(
     prefix="/auth",
     tags=["Authentication"]
@@ -31,3 +37,30 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
         )
 
     return create_user(db, user)
+
+
+@router.post("/login", response_model=Token)
+def login(user: UserLogin, db: Session = Depends(get_db)):
+
+    authenticated_user = authenticate_user(
+        db,
+        user.email,
+        user.password
+    )
+
+    if not authenticated_user:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid email or password"
+        )
+
+    access_token = create_access_token(
+        {
+            "sub": authenticated_user.email
+        }
+    )
+
+    return {
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
