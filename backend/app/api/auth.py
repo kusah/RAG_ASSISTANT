@@ -13,7 +13,8 @@ from app.schemas.user import UserLogin, Token
 from app.crud.user import authenticate_user
 from app.auth.jwt_handler import create_access_token
 
-
+from app.auth.dependencies import get_current_user
+from app.models.user import User
 
 router = APIRouter(
     prefix="/auth",
@@ -64,3 +65,8 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
         "access_token": access_token,
         "token_type": "bearer"
     }
+
+
+@router.get("/me", response_model=UserResponse)
+def get_me(current_user: User = Depends(get_current_user)):
+    return current_user
