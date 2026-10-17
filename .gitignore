@@ -1,0 +1,80 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+logs/
+
+# IDE and editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML models and generated data
+models/
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+*.onnx
+
+# Uploaded documents and generated files
+uploads/
+data/
+chroma_db/
+chroma/
+*.sqlite
+*.sqlite3
+*.db
+
+# Node.js (if frontend exists)
+node_modules/
+npm-debug.log*
+dist/
+
+# Docker local overrides
+docker-compose.override.yml
+
+# Kubernetes local secret files
+k8s/*secret*.local.yaml
+
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+*.db
+backend/rag.db
