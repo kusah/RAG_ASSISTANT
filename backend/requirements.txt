@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+chromadb
+PyMuPDF
+python-dotenv
+pydantic-settings
+python-multipart
+email-validator
+python-jose[cryptography]
+passlib
+bcrypt==4.0.1
+openai
+sentence-transformers
